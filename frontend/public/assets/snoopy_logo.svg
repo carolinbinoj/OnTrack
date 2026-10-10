@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Warm retro background badge -->
+  <rect x="4" y="4" width="112" height="112" rx="24" fill="#FDF6E2" stroke="#E67E22" stroke-width="4"/>
+  
+  <!-- Classic Red Doghouse Roof -->
+  <polygon points="20,70 60,35 100,70" fill="#D32F2F" stroke="#2B1810" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Doghouse Wall -->
+  <rect x="26" y="70" width="68" height="38" fill="#C62828" stroke="#2B1810" stroke-width="3"/>
+  <rect x="48" y="80" width="24" height="28" rx="12" fill="#2B1810"/>
+
+  <!-- Snoopy lying peacefully on roof -->
+  <!-- Snoopy Body (white) -->
+  <ellipse cx="60" cy="38" rx="20" ry="9" fill="#FFFFFF" stroke="#2B1810" stroke-width="2.5"/>
+  <!-- Snoopy Head -->
+  <ellipse cx="44" cy="33" rx="11" ry="8" fill="#FFFFFF" stroke="#2B1810" stroke-width="2.5"/>
+  <!-- Snoopy Nose -->
+  <ellipse cx="34" cy="33" rx="3.5" ry="2.5" fill="#2B1810"/>
+  <!-- Snoopy Black Ear -->
+  <ellipse cx="51" cy="34" rx="4" ry="7" fill="#2B1810"/>
+  <!-- Snoopy Sleeping Eye line -->
+  <path d="M 40 31 Q 42 29 44 31" fill="none" stroke="#2B1810" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Snoopy Paws hanging down -->
+  <ellipse cx="62" cy="46" rx="4" ry="7" fill="#FFFFFF" stroke="#2B1810" stroke-width="2"/>
+  <ellipse cx="74" cy="46" rx="4" ry="7" fill="#FFFFFF" stroke="#2B1810" stroke-width="2"/>
+  
+  <!-- Small cozy stars / notes -->
+  <path d="M 78 20 L 80 25 L 85 27 L 80 29 L 78 34 L 76 29 L 71 27 L 76 25 Z" fill="#F39C12"/>
+</svg>
