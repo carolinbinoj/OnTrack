@@ -197,41 +197,45 @@ def evaluate():
 
     evaluator_persona = evaluator_prompts.get(evaluator_type, evaluator_prompts["conductor"])
 
-    system_prompt = f"""
-{evaluator_persona}
+    system_instruction = evaluator_persona + """
 
-Evaluate the student's explanation of the topic: "{topic}".
-Topic Reference Notes (if provided): "{reference_notes}"
-Student Explanation:
-"{explanation}"
+You must evaluate each student's explanation carefully and specifically.
+Your score and feedback MUST reflect the actual content of their explanation.
+Never give the same feedback twice — tailor every response to what the student actually wrote.
+Respond with ONLY valid JSON (no markdown fences, no surrounding text) in this exact structure:
+{
+  "score": <integer 0 to 100, based strictly on explanation quality>,
+  "summary_message": "<2-3 sentences of feedback in your character voice, referencing specific things the student said>",
+  "correct_concepts": ["<specific concepts the student got right>"],
+  "missing_concepts": ["<specific key concepts they missed for this topic>"],
+  "misconceptions": ["<any factual errors or flawed reasoning, or empty list if none>"],
+  "improvement_tips": ["<1-2 concrete, actionable tips tailored to their specific explanation>"]
+}"""
 
-Respond with ONLY valid JSON (no markdown fences, no surrounding text) with the exact structure:
-{{
-  "score": <integer 0 to 100>,
-  "summary_message": "<feedback message written strictly in your character's persona and voice>",
-  "correct_concepts": ["<list of concepts the student explained well and correctly>"],
-  "missing_concepts": ["<list of key concepts that were missed or omitted>"],
-  "misconceptions": ["<list of factual mistakes or flawed reasoning, empty if none>"],
-  "improvement_tips": ["<concrete actionable suggestions for how to improve understanding>"]
-}}
-"""
+    user_message = f"""Topic: {topic}
+{f'Reference Notes: {reference_notes}' if reference_notes else ''}
+Student's Explanation: {explanation}
+
+Evaluate this explanation now. Be specific to what was written above."""
 
     gemini_result = None
     is_real_gemini = False
 
     if GEMINI_API_KEY and not force_demo:
         try:
-            # Call Gemini REST API using httpx
-            # Use gemini-2.5-flash or gemini-1.5-flash
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
             payload = {
+                "system_instruction": {
+                    "parts": [{"text": system_instruction}]
+                },
                 "contents": [
                     {
-                        "parts": [{"text": system_prompt}]
+                        "role": "user",
+                        "parts": [{"text": user_message}]
                     }
                 ],
                 "generationConfig": {
-                    "temperature": 0.4,
+                    "temperature": 0.7,
                     "responseMimeType": "application/json"
                 }
             }
