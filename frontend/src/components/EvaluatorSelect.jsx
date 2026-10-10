@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { soundService } from '../services/soundService';
 
 export default function EvaluatorSelect({
-  topicTitle = 'Photosynthesis',
-  taskDescription = '',
+  topicTitle = 'Biology: Cell Structure',
   onSelectEvaluator,
   onCancel
 }) {
@@ -12,42 +11,30 @@ export default function EvaluatorSelect({
   const evaluators = [
     {
       id: 'child',
-      name: 'Capybara Child',
-      title: 'The Curious 5-Year-Old',
-      avatar: '/assets/avatar_capybara.png',
-      badge: 'GENTLE & CURIOUS',
-      badgeColor: '#27AE60',
-      strictness: 'Low ★☆☆',
-      rewardMultiplier: '1x Value (Basic)',
-      description: 'Curious, innocent, and kind. Asks simple questions and rewards intuitive explanations without needing heavy jargon.',
-      favoriteFor: 'Introductory topics or relaxed explanations',
-      quote: '"Ooh! Can you tell me what that is like I was five?"'
+      name: 'The Capybara',
+      avatar: '/assets/evaluator_capybara_vibe.png',
+      traits: 'Curious • Gentle',
+      badge: 'Beginner friendly',
+      badgeBg: '#E8F5E9',
+      badgeColor: '#2E7D32'
     },
     {
       id: 'conductor',
-      name: 'Friendly Conductor',
-      title: 'The Railway Guide',
-      avatar: '/assets/avatar_conductor.png',
-      badge: 'BALANCED & WARM',
-      badgeColor: '#E67E22',
-      strictness: 'Medium ★★☆',
-      rewardMultiplier: '2x Value (Standard)',
-      description: 'Warm and knowledgeable dog conductor. Checks whether your explanation is clear, coherent, and covers the essential steps.',
-      favoriteFor: 'Everyday study sessions & balanced feedback',
-      quote: '"All aboard! Let’s make sure you know the route of this concept."'
+      name: 'The Conductor',
+      avatar: '/assets/evaluator_conductor_vibe.png',
+      traits: 'Encouraging • Balanced',
+      badge: 'Moderately strict',
+      badgeBg: '#FFF3E0',
+      badgeColor: '#D35400'
     },
     {
       id: 'professor',
-      name: 'Strict Professor',
-      title: 'Academy Chair Mandrill',
-      avatar: '/assets/avatar_professor.png',
-      badge: 'STRICT & RIGOROUS',
-      badgeColor: '#8E44AD',
-      strictness: 'High ★★★',
-      rewardMultiplier: '3x Value (Prestige)',
-      description: 'Analytical and exacting baboon scholar. Demands conceptual correctness, cause-and-effect reasoning, and precision.',
-      favoriteFor: 'Earning Professor — Excellent stamps to unlock Coach 2!',
-      quote: '"Accuracy is paramount. Demonstrate your true depth of mastery."'
+      name: 'The Professor',
+      avatar: '/assets/evaluator_professor_vibe.png',
+      traits: 'Analytical • Rigorous',
+      badge: 'Most valuable rewards',
+      badgeBg: '#F3E5F5',
+      badgeColor: '#6A1B9A'
     }
   ];
 
@@ -65,79 +52,54 @@ export default function EvaluatorSelect({
     <div
       style={{
         minHeight: '100vh',
-        background: 'linear-gradient(to bottom, #11251b, #1e3f2e 60%, #11251b)',
+        background: 'linear-gradient(to bottom, #162f22, #234832 60%, #162f22)',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         padding: '24px 20px',
-        color: '#2B170C'
+        color: '#2A1810'
       }}
-      className="evaluator-select-page"
     >
+      {/* Wooden Hanging Next Stop Sign (Matching Panel 5) */}
       <div
         style={{
-          maxWidth: '920px',
-          width: '100%',
-          background: '#FCF8EE',
-          border: '4px solid #2B170C',
-          borderRadius: '16px',
-          boxShadow: '0 8px 0 #2B170C, inset 0 2px 0 rgba(255,255,255,0.8)',
-          padding: '28px',
-          position: 'relative'
+          background: '#FCF8EF',
+          border: '3px solid #381E10',
+          borderRadius: '10px',
+          boxShadow: '0 4px 0 #201007',
+          padding: '8px 28px',
+          textAlign: 'center',
+          marginBottom: '24px'
         }}
       >
-        {/* Station Sign & Topic Header */}
-        <div
-          style={{
-            textAlign: 'center',
-            borderBottom: '3px dashed #D4BC92',
-            paddingBottom: '20px',
-            marginBottom: '24px'
-          }}
-        >
-          {/* Alpine Station Wooden Sign */}
-          <div
-            style={{
-              display: 'inline-block',
-              background: '#2B170C',
-              color: '#FDF6E2',
-              padding: '6px 24px',
-              borderRadius: '6px',
-              border: '3px solid #73452A',
-              boxShadow: '0 4px 0 #180B05',
-              fontFamily: "'Pixelify Sans', monospace",
-              fontSize: '15px',
-              letterSpacing: '2px',
-              marginBottom: '10px'
-            }}
-          >
-            🚉 ALPINE STATION STOP REACHED
-          </div>
+        <div style={{ fontSize: '11px', fontWeight: '800', color: '#B82B24', letterSpacing: '1px' }}>
+          NEXT STOP
+        </div>
+        <div style={{ fontSize: '20px', fontWeight: '800', color: '#2A1810' }}>
+          {topicTitle}
+        </div>
+      </div>
 
-          <h2
-            style={{
-              fontFamily: "'Pixelify Sans', monospace",
-              fontSize: '28px',
-              color: '#B82B24',
-              marginBottom: '6px'
-            }}
-          >
-            Topic: {topicTitle}
-          </h2>
-          <p style={{ fontFamily: "'Patrick Hand', cursive", fontSize: '18px', color: '#73452A' }}>
-            Choose which traveling scholar you will explain your learning to inside your study journal:
+      {/* 3 Character Cards Container */}
+      <div
+        className="vibe-wood-card"
+        style={{
+          width: '100%',
+          maxWidth: '820px',
+          padding: '24px'
+        }}
+      >
+        <div style={{ textAlign: 'center', marginBottom: '18px' }}>
+          <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#2A1810' }}>
+            Choose an Evaluator
+          </h3>
+          <p style={{ fontSize: '14px', color: '#73452A' }}>
+            Each has a unique personality and reward value
           </p>
         </div>
 
-        {/* 3 Evaluator Cards Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '16px',
-            marginBottom: '28px'
-          }}
-        >
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px', marginBottom: '22px' }}>
           {evaluators.map((ev) => {
             const isChosen = selected === ev.id;
             return (
@@ -145,139 +107,80 @@ export default function EvaluatorSelect({
                 key={ev.id}
                 onClick={() => handleSelect(ev.id)}
                 style={{
-                  background: isChosen ? '#FEF7EC' : '#FFF',
-                  border: isChosen ? '4px solid #B82B24' : '3px solid #2B170C',
+                  background: isChosen ? '#FEF7EC' : '#FFFFFF',
+                  border: isChosen ? '3px solid #B82B24' : '2px solid #D4BC92',
                   borderRadius: '12px',
-                  boxShadow: isChosen ? '0 6px 0 #B82B24' : '0 4px 0 #2B170C',
-                  padding: '16px',
+                  boxShadow: isChosen ? '0 4px 0 #B82B24' : '0 2px 4px rgba(0,0,0,0.06)',
+                  padding: '16px 12px',
+                  textAlign: 'center',
                   cursor: 'pointer',
-                  transition: 'transform 0.15s ease, box-shadow 0.15s ease',
-                  transform: isChosen ? 'translateY(-4px)' : 'none',
-                  position: 'relative',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between'
+                  transform: isChosen ? 'translateY(-3px)' : 'none',
+                  transition: 'all 0.15s ease'
                 }}
-                className="evaluator-card hover:scale-102"
               >
-                {/* Strictness & Badge */}
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                    <span
-                      style={{
-                        background: ev.badgeColor,
-                        color: '#FFF',
-                        fontFamily: "'Pixelify Sans', monospace",
-                        fontSize: '10px',
-                        padding: '2px 8px',
-                        borderRadius: '999px',
-                        fontWeight: 'bold'
-                      }}
-                    >
-                      {ev.badge}
-                    </span>
-                    <span style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: '12px', color: '#73452A', fontWeight: 'bold' }}>
-                      {ev.strictness}
-                    </span>
-                  </div>
-
-                  {/* Avatar Portrait */}
-                  <div
-                    style={{
-                      width: '100px',
-                      height: '100px',
-                      margin: '0 auto 12px auto',
-                      borderRadius: '50%',
-                      border: '3px solid #2B170C',
-                      overflow: 'hidden',
-                      boxShadow: '0 4px 6px rgba(0,0,0,0.2)',
-                      background: '#FFF'
-                    }}
-                  >
-                    <img
-                      src={ev.avatar}
-                      alt={ev.name}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                      onError={(e) => {
-                        // Fallback emoji if image failed
-                        e.target.style.display = 'none';
-                        e.target.parentNode.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:42px;">${
-                          ev.id === 'child' ? '🐾' : ev.id === 'conductor' ? '🐶' : '🐵'
-                        }</div>`;
-                      }}
-                    />
-                  </div>
-
-                  {/* Character Name & Title */}
-                  <div style={{ textAlign: 'center', marginBottom: '8px' }}>
-                    <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: '18px', fontWeight: 'bold', color: '#2B170C' }}>
-                      {ev.name}
-                    </div>
-                    <div style={{ fontFamily: "'Patrick Hand', cursive", fontSize: '14px', color: '#73452A' }}>
-                      {ev.title}
-                    </div>
-                  </div>
-
-                  {/* Quote */}
-                  <div
-                    style={{
-                      fontFamily: "'Patrick Hand', cursive",
-                      fontSize: '14px',
-                      fontStyle: 'italic',
-                      color: '#4A2816',
-                      background: 'rgba(212, 188, 146, 0.25)',
-                      padding: '6px 10px',
-                      borderRadius: '6px',
-                      marginBottom: '10px',
-                      textAlign: 'center'
-                    }}
-                  >
-                    {ev.quote}
-                  </div>
-
-                  <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: '13px', color: '#555', lineHeight: 1.4, marginBottom: '12px' }}>
-                    {ev.description}
-                  </p>
-                </div>
-
-                {/* Reward Multiplier Banner */}
+                {/* Character Avatar */}
                 <div
                   style={{
-                    background: '#FAF0E6',
-                    border: '1px solid #D4BC92',
-                    borderRadius: '6px',
-                    padding: '8px',
-                    textAlign: 'center'
+                    width: '84px',
+                    height: '84px',
+                    margin: '0 auto 10px auto',
+                    borderRadius: '50%',
+                    border: '2px solid #381E10',
+                    overflow: 'hidden',
+                    background: '#FFF'
                   }}
                 >
-                  <div style={{ fontFamily: "'Pixelify Sans', monospace", fontSize: '12px', color: '#B82B24', fontWeight: 'bold' }}>
-                    💎 Reward: {ev.rewardMultiplier}
-                  </div>
-                  <div style={{ fontFamily: "'Patrick Hand', cursive", fontSize: '12px', color: '#73452A', marginTop: '2px' }}>
-                    {ev.favoriteFor}
-                  </div>
+                  <img
+                    src={ev.avatar}
+                    alt={ev.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    onError={(e) => {
+                      // Fallback avatar
+                      e.target.src = `/assets/avatar_${ev.id === 'child' ? 'capybara' : ev.id}.png`;
+                    }}
+                  />
                 </div>
+
+                <div style={{ fontSize: '16px', fontWeight: '800', color: '#2A1810' }}>
+                  {ev.name}
+                </div>
+                <div style={{ fontSize: '13px', color: '#73452A', margin: '3px 0 8px 0' }}>
+                  {ev.traits}
+                </div>
+
+                <span
+                  style={{
+                    background: ev.badgeBg,
+                    color: ev.badgeColor,
+                    padding: '3px 8px',
+                    borderRadius: '999px',
+                    fontSize: '11px',
+                    fontWeight: '700'
+                  }}
+                >
+                  {ev.badge}
+                </span>
               </div>
             );
           })}
         </div>
 
         {/* Action Row */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '3px dashed #D4BC92', paddingTop: '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <button
             onClick={() => { soundService.playClick(); onCancel(); }}
-            className="pixel-btn pixel-btn-parchment"
-            style={{ fontSize: '14px' }}
+            className="btn-wood"
+            style={{ padding: '8px 16px', fontSize: '13px' }}
           >
-            ← Return to Coach
+            ← Back to Train
           </button>
 
           <button
             onClick={handleConfirm}
-            className="pixel-btn pixel-btn-train"
-            style={{ fontSize: '17px', padding: '12px 32px' }}
+            className="btn-green-pill"
+            style={{ padding: '10px 28px', fontSize: '15px' }}
           >
-            📖 Open Study Book with {evaluators.find(e => e.id === selected)?.name} →
+            Open Study Book →
           </button>
         </div>
       </div>
