@@ -6,8 +6,7 @@ from pathlib import Path
 from flask import Flask, request, jsonify
 import httpx
 from dotenv import load_dotenv
-
-load_dotenv()
+load_dotenv(Path(__file__).resolve().parent / ".env", override=False)
 
 app = Flask(__name__)
 
@@ -256,7 +255,7 @@ Respond with ONLY valid JSON (no markdown fences, no surrounding text) with the 
                             gemini_result = json.loads(raw_text.strip())
                             is_real_gemini = True
         except Exception as e:
-            print(f"Gemini API request failed: {e}")
+            app.logger.exception("Gemini API request failed")
             gemini_result = None
 
     # If Gemini API failed or is not configured, handle appropriately
