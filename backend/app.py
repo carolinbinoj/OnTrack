@@ -223,7 +223,7 @@ Evaluate this explanation now. Be specific to what was written above."""
 
     if GEMINI_API_KEY and not force_demo:
         try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key={GEMINI_API_KEY}"
             payload = {
                 "system_instruction": {
                     "parts": [{"text": system_instruction}]
@@ -239,7 +239,7 @@ Evaluate this explanation now. Be specific to what was written above."""
                     "responseMimeType": "application/json"
                 }
             }
-            with httpx.Client(timeout=25.0) as client:
+            with httpx.Client(timeout=30.0) as client:
                 res = client.post(url, json=payload)
                 if res.status_code == 200:
                     resp_json = res.json()
@@ -258,6 +258,8 @@ Evaluate this explanation now. Be specific to what was written above."""
                                 raw_text = raw_text[:-3]
                             gemini_result = json.loads(raw_text.strip())
                             is_real_gemini = True
+                else:
+                    app.logger.error(f"Gemini API error {res.status_code}: {res.text[:300]}")
         except Exception as e:
             app.logger.exception("Gemini API request failed")
             gemini_result = None
