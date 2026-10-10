@@ -1,59 +1,25 @@
-/* ONTRACK COZY PIXEL-ART DESIGN SYSTEM */
+/* ONTRACK DESIGN SYSTEM - VIBE ALIGNED WITH MASTER INFOGRAPHIC */
 
 :root {
-  /* Colors */
-  --c-forest-dark: #162f22;
+  /* Warm Swiss train palette */
+  --c-forest-dark: #1b3524;
   --c-forest-mid: #254d37;
-  --c-forest-light: #3d6e52;
-  --c-sage: #6b8f77;
-  --c-sage-light: #9ab8a4;
-
-  --c-cream-bg: #fcf8ee;
-  --c-parchment-light: #f7edd7;
-  --c-parchment-mid: #eedcb9;
-  --c-parchment-border: #d4bc92;
-  --c-parchment-line: #d8c3a0;
-
-  --c-wood-dark: #2b170c;
+  --c-parchment-bg: #fdfaf3;
+  --c-parchment-card: #f9f4e8;
+  --c-parchment-border: #d2b48c;
+  --c-wood-dark: #2a1810;
   --c-wood-mid: #4a2816;
-  --c-wood-light: #73452a;
-  --c-wood-warm: #945d3c;
-
-  --c-train-dark: #7e1913;
-  --c-train-red: #b82b24;
-  --c-train-light: #dc4138;
-  --c-train-accent: #f2685f;
-
-  --c-amber-glow: #f5a623;
-  --c-amber-light: #ffd56b;
-  --c-gold: #f7b731;
-  --c-gold-shine: #fed330;
-
-  --c-orange-accent: #e67e22;
-  --c-orange-light: #fa8231;
-
-  --c-sky-top: #70a1ff;
-  --c-sky-mid: #a1c4fd;
-  --c-sky-bottom: #c2e9fb;
+  --c-wood-border: #381e10;
+  --c-train-red: #c0392b;
+  --c-train-darkred: #96281b;
+  --c-gold: #f39c12;
+  --c-green-btn: #27ae60;
+  --c-green-dark: #1e8449;
 
   /* Typography */
-  --font-pixel: 'Pixelify Sans', 'Press Start 2P', monospace;
+  --font-ui: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-hand: 'Patrick Hand', cursive, sans-serif;
-  --font-ui: 'Outfit', sans-serif;
-
-  /* Elevations & pixel borders */
-  --pixel-border-wood: 3px solid var(--c-wood-dark);
-  --pixel-border-cream: 3px solid #2b1810;
-  --pixel-shadow-sm: 0 4px 0 var(--c-wood-dark);
-  --pixel-shadow-md: 0 6px 0 var(--c-wood-dark);
-  --pixel-shadow-inset: inset 0 -3px 0 rgba(0, 0, 0, 0.25);
-
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-full: 9999px;
-
-  --transition-smooth: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --font-pixel: 'Pixelify Sans', monospace;
 }
 
 *, *::before, *::after {
@@ -64,133 +30,91 @@
 
 body {
   font-family: var(--font-ui);
-  background-color: var(--c-forest-dark);
-  color: var(--c-wood-dark);
+  background-color: #1a2e20;
+  color: #2a1810;
   min-height: 100vh;
   overflow-x: hidden;
   user-select: none;
   -webkit-font-smoothing: antialiased;
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(245, 166, 35, 0.15), transparent 70%),
-    linear-gradient(to bottom, #11251b, #1e3f2e);
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Cozy Scrollbars */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--c-parchment-mid);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--c-wood-light);
-  border-radius: 4px;
-  border: 1px solid var(--c-wood-dark);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--c-wood-mid);
+/* HIGH-READABILITY NUMBER UTILITIES */
+.num-clean {
+  font-family: var(--font-ui) !important;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: -0.5px;
 }
 
-/* Pixel Typography Utilities */
-.font-pixel {
-  font-family: var(--font-pixel);
-  letter-spacing: 0.5px;
-}
-.font-hand {
-  font-family: var(--font-hand);
-}
-.font-ui {
+/* Pixel & Vibe Buttons */
+.btn-green-pill {
+  background: linear-gradient(to bottom, #2ecc71, #27ae60);
+  color: #ffffff;
+  border: 2px solid #196f3d;
+  border-radius: 999px;
   font-family: var(--font-ui);
-}
-
-/* Pixel Buttons */
-.pixel-btn {
-  font-family: var(--font-pixel);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #196f3d, 0 6px 12px rgba(0,0,0,0.25);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  border: 3px solid var(--c-wood-dark);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
-  box-shadow: 0 4px 0 var(--c-wood-dark);
-  position: relative;
-  outline: none;
 }
-.pixel-btn:hover {
+.btn-green-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 0 var(--c-wood-dark);
+  box-shadow: 0 6px 0 #196f3d, 0 8px 16px rgba(0,0,0,0.3);
 }
-.pixel-btn:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 var(--c-wood-dark);
-}
-.pixel-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: 0 2px 0 var(--c-wood-dark);
+.btn-green-pill:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #196f3d;
 }
 
-.pixel-btn-primary {
-  background: linear-gradient(to bottom, #2ecc71, #27ae60);
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+.btn-wood {
+  background: #fdfaf3;
+  color: #2a1810;
+  border: 2px solid #4a2816;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #381e10;
+  transition: all 0.1s ease;
 }
-.pixel-btn-train {
-  background: linear-gradient(to bottom, var(--c-train-light), var(--c-train-red));
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+.btn-wood:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
 }
-.pixel-btn-amber {
-  background: linear-gradient(to bottom, #f39c12, #d35400);
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-}
-.pixel-btn-parchment {
-  background: var(--c-parchment-light);
-  color: var(--c-wood-dark);
-  border-color: var(--c-wood-dark);
-}
-.pixel-btn-parchment:hover {
-  background: #fff;
+.btn-wood:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #381e10;
 }
 
-/* Cozy Panels & Parchment Boxes */
-.pixel-box {
-  background: var(--c-parchment-light);
-  border: 3px solid var(--c-wood-dark);
-  border-radius: var(--radius-md);
-  box-shadow: 0 6px 0 var(--c-wood-dark), inset 0 2px 0 rgba(255,255,255,0.7);
+/* Wood frame card style matching Panel 4, 5, 7, 8 */
+.vibe-wood-card {
+  background: #fcf8ef;
+  border: 3px solid #381e10;
+  border-radius: 14px;
+  box-shadow: 0 6px 0 #201007, 0 10px 24px rgba(0,0,0,0.4);
   position: relative;
 }
 
-.pixel-card-header {
-  border-bottom: 2px dashed var(--c-parchment-border);
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Bear animation frames */
+@keyframes bear-subtle-breathing {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
-/* Glass & Vignette effects */
-.ambient-glow {
-  box-shadow: 0 0 40px rgba(245, 166, 35, 0.35);
-}
-
-/* Reduced Motion Mode Support */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
